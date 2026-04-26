@@ -5,62 +5,31 @@
 </head>
 <body>
 
-  <h1>Register</h1>
-  <input id="regUser" placeholder="Username">
-  <input id="regPass" placeholder="Password" type="password">
-  <button onclick="register()">Register</button>
+<h1>Register</h1>
+<input id="regUser" placeholder="Username">
+<input id="regPass" type="password" placeholder="Password">
+<button onclick="register()">Register</button>
 
-  <h1>Login</h1>
-  <input id="loginUser" placeholder="Username">
-  <input id="loginPass" placeholder="Password" type="password">
-  <button onclick="login()">Login</button>
+<h1>Login</h1>
+<input id="loginUser" placeholder="Username">
+<input id="loginPass" type="password" placeholder="Password">
+<button onclick="login()">Login</button>
 
-  <h2>Dashboard</h2>
-  <input id="dashUser" placeholder="Username">
-  <button onclick="getDashboard()">View Dashboard</button>
+<h2>Dashboard</h2>
+<input id="dashUser" placeholder="Username">
+<button onclick="getDashboard()">View Dashboard</button>
 
-  <h2>Stats</h2>
-  <button onclick="getStats()">View Stats</button>
+<h2>Stats</h2>
+<button onclick="getStats()">View Stats</button>
 
-  <h2>Unsubscribe</h2>
-  <input id="subUser" placeholder="Username">
-  <input id="subTopic" placeholder="Topic name">
-  <button onclick="unsubscribe()">Unsubscribe</button>
-  
-  
-  <p id="result"></p>
+<h2>Unsubscribe</h2>
+<input id="subUser" placeholder="Username">
+<input id="subTopic" placeholder="Topic name">
+<button onclick="unsubscribe()">Unsubscribe</button>
 
-  <script>
-    const BASE_URL = "https://cmps-4150-project.onrender.com";
+<pre id="output"></pre>
 
-    async function register() {
-      const username = document.getElementById("regUser").value;
-      const password = document.getElementById("regPass").value;
-
-      const res = await fetch(BASE_URL + "/register", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username, password })
-      });
-
-      const data = await res.json();
-      document.getElementById("result").innerText = JSON.stringify(data);
-    }
-
-    async function login() {
-      const username = document.getElementById("loginUser").value;
-      const password = document.getElementById("loginPass").value;
-
-      const res = await fetch(BASE_URL + "/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username, password })
-      });
-
-      const data = await res.json();
-      document.getElementById("result").innerText = JSON.stringify(data);
-    }
-  </script>
+<script src="script.js"></script>
 
 </body>
 </html>
