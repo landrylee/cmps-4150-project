@@ -5,19 +5,29 @@ exports.createTopic = async (req, res) => {
   try {
     const { name, username } = req.body;
 
+    let topic = await Topic.findOne({ name: name.trim() });
+
+    if (!topic) {
+      topic = new Topic({ name: name.trim() });
+      await topic.save();
+    }
+
     const user = await User.findOne({ username });
 
-    const topic = new Topic({
-      name,
-      subscribers: [user._id]
-    });
+    if (!user) return res.send("User not found");
 
+    if (!user.subscriptions.some(id => id.equals(topic._id))) {
+      user.subscriptions.push(topic._id);
+    }
+
+    if (!topic.subscribers.some(id => id.equals(user._id))) {
+      topic.subscribers.push(user._id);
+    }
+
+    await user.save();
     await topic.save();
 
-    user.subscriptions.push(topic._id);
-    await user.save();
-
-    res.send("Topic created and subscribed!");
+    res.send("Topic created/subscribed");
   } catch {
     res.send("Error creating topic");
   }
