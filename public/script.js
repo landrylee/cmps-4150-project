@@ -1,4 +1,4 @@
-const API = "https://cmps-4150-project.onrender.com";
+const API = "";
 
 function show(data) {
   document.getElementById("output").innerText =
@@ -18,7 +18,7 @@ async function register() {
 }
 
 async function login() {
-  const res = await fetch(API + "/login", {
+  const res = await fetch("/login", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
@@ -30,7 +30,7 @@ async function login() {
 }
 
 async function createTopic() {
-  const res = await fetch(API + "/createTopic", {
+  const res = await fetch("/createTopic", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
@@ -41,7 +41,7 @@ async function createTopic() {
 }
 
 async function subscribe() {
-  const res = await fetch(API + "/subscribe", {
+  const res = await fetch("/subscribe", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
@@ -53,7 +53,7 @@ async function subscribe() {
 }
 
 async function unsubscribe() {
-  const res = await fetch(API + "/unsubscribe", {
+  const res = await fetch("/unsubscribe", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
@@ -65,7 +65,7 @@ async function unsubscribe() {
 }
 
 async function postMessage() {
-  const res = await fetch(API + "/postMessage", {
+  const res = await fetch("/postMessage", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
@@ -79,11 +79,11 @@ async function postMessage() {
 
 async function getDashboard() {
   const username = dashUser.value;
-  const res = await fetch(API + "/dashboard/" + username);
+  const res = await fetch("/dashboard/" + username);
   show(await res.json());
 }
 
 async function getStats() {
-  const res = await fetch(API + "/stats");
+  const res = await fetch("/stats");
   show(await res.json());
 }
