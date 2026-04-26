@@ -4,12 +4,6 @@ const path = require("path");
 
 const app = express();
 
-app.use(session({
-  secret: "secret",
-  resave: false,
-  saveUninitialized: true
-}));
-
 const userRoutes = 
 
 app.use(express.json());
