@@ -17,6 +17,12 @@ app.use(express.static(path.join(__dirname, "public")));
 
 const session = require("express-session");
 
+app.use(session({
+  secret: "secret",
+  resave: false,
+  saveUninitialized: true
+}));
+
 // Singleton DB connection
 let db = null;
 function connectDB() {
