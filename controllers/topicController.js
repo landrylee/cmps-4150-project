@@ -46,18 +46,22 @@ exports.unsubscribe = async (req, res) => {
   const user = await User.findOne({ username });
   const topic = await Topic.findOne({ name: topicName });
 
+  if (!user || !topic) {
+    return res.send("User or topic not found");
+  }
+
   user.subscriptions = user.subscriptions.filter(
-    id => id.toString() !== topic._id.toString()
+    id => !id.equals(topic._id)
   );
 
   topic.subscribers = topic.subscribers.filter(
-    id => id.toString() !== user._id.toString()
+    id => !id.equals(user._id)
   );
 
   await user.save();
   await topic.save();
 
-  res.send("Unsubscribed");
+  res.send("Unsubscribed successfully");
 };
 
 exports.postMessage = async (req, res) => {
