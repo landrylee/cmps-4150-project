@@ -4,11 +4,29 @@ const path = require("path");
 
 const app = express();
 
+app.use(session({
+  secret: "secret",
+  resave: false,
+  saveUninitialized: true
+}));
+
+const userRoutes = 
+
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
 
-mongoose.connect(process.env.MONGO_URI)
-  .then(() => console.log("MongoDB connected"));
+const session = require("express-session");
+
+// Singleton DB connection
+let db = null;
+function connectDB() {
+  if (!db) {
+    db = mongoose.connect(process.env.MONGO_URI);
+  }
+  return db;
+}
+
+connectDB();
 
 const userRoutes = require("./routes/userRoutes");
 const topicRoutes = require("./routes/topicRoutes");
@@ -24,4 +42,4 @@ const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
   console.log("Server running on port " + PORT);
-});
+});c

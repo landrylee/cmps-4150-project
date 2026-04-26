@@ -1,50 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>CMPS 4150 App</title>
+  <title>Login</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<h1>Register</h1>
-<input id="regUser" placeholder="Username">
-<input id="regPass" type="password" placeholder="Password">
-<button onclick="register()">Register</button>
+<div class="card">
+  <h1>Login</h1>
+  <input id="loginUser" placeholder="Username">
+  <input id="loginPass" type="password" placeholder="Password">
+  <button onclick="login()">Login</button>
 
-<h1>Login</h1>
-<input id="loginUser" placeholder="Username">
-<input id="loginPass" type="password" placeholder="Password">
-<button onclick="login()">Login</button>
+  <h2>Register</h2>
+  <input id="regUser" placeholder="Username">
+  <input id="regPass" type="password" placeholder="Password">
+  <button onclick="register()">Register</button>
+</div>
 
-<h2>Dashboard</h2>
-<input id="dashUser" placeholder="Username">
-<button onclick="getDashboard()">View Dashboard</button>
-
-<h2>Stats</h2>
-<button onclick="getStats()">View Stats</button>
-
-<h2>Unsubscribe</h2>
-<input id="unsubUser" placeholder="Username">
-<input id="unsubTopic" placeholder="Topic name">
-<button onclick="unsubscribe()">Unsubscribe</button>
-
-<h2>Create Topic</h2>
-<input id="topicName" placeholder="Topic name">
-<button onclick="createTopic()">Create</button>
-
-<h2>Subscribe</h2>
-<input id="subUser" placeholder="Username">
-<input id="subTopic" placeholder="Topic name">
-<button onclick="subscribe()">Subscribe</button>
-
-<h2>Post Message</h2>
-<input id="msgUser" placeholder="Username">
-<input id="msgTopic" placeholder="Topic name">
-<input id="msgContent" placeholder="Message">
-<button onclick="postMessage()">Send</button>
-
-<pre id="output"></pre>
-
-<script src="script.js"></script>
-
+<script src="auth.js"></script>
 </body>
 </html>

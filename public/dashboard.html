@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>Dashboard</h1>
+<button onclick="logout()">Logout</button>
+
+<h2>Notifications</h2>
+<div id="notifications"></div>
+
+<h2>Your Topics</h2>
+<pre id="dashboard"></pre>
+
+<h2>All Topics</h2>
+<div id="topics"></div>
+
+<h2>Create Topic</h2>
+<input id="topicName">
+<button onclick="createTopic()">Create</button>
+
+<h2>Post Message</h2>
+<input id="msgTopic">
+<input id="msgContent">
+<button onclick="postMessage()">Send</button>
+
+<script src="app.js"></script>
+</body>
+</html>
