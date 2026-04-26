@@ -13,6 +13,10 @@ const topicRoutes = require("./routes/topicRoutes");
 app.use("/", userRoutes);
 app.use("/", topicRoutes);
 
+app.get("/", (req, res) => {
+  res.send("API is running");
+});
+
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
