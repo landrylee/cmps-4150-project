@@ -31,8 +31,13 @@ exports.subscribe = async (req, res) => {
 
   if (!user || !topic) return res.send("Not found");
 
-  user.subscriptions.push(topic._id);
-  topic.subscribers.push(user._id);
+  if (!user.subscriptions.some(id => id.equals(topic._id))) {
+    user.subscriptions.push(topic._id);
+  }
+
+  if (!topic.subscribers.some(id => id.equals(user._id))) {
+    topic.subscribers.push(user._id);
+  }
 
   await user.save();
   await topic.save();
