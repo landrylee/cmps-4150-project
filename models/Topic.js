@@ -4,6 +4,7 @@ const TopicSchema = new mongoose.Schema({
   name: { type: String, unique: true },
   messages: [
     {
+      username: String,
       content: String,
       date: { type: Date, default: Date.now }
     }
