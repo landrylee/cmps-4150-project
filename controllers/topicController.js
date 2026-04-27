@@ -108,7 +108,11 @@ exports.postMessage = async (req, res) => {
 
     if (!isSubscribed) return res.send("Not subscribed");
 
-    topic.messages.push({ content });
+    topic.messages.push({
+      username: user.username,
+      content: content
+    });
+    
     await topic.save();
 
     // OBSERVER PATTERN
