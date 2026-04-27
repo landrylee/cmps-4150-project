@@ -9,7 +9,10 @@ async function loadAll() {
       dashboardHTML = "<p>No subscribed topics yet</p>";
     } else {
       dashData.forEach(topic => {
-        dashboardHTML += `<h3>${topic.topicName}</h3>`;
+        dashboardHTML += `
+          <h3>${topic.topicName}</h3>
+          <p><strong>Access Count:</strong> ${topic.accessCount}</p>
+`        ;
   
         if (topic.messages.length === 0) {
           dashboardHTML += "<p>No messages yet</p>";

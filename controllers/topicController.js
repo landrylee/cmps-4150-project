@@ -112,7 +112,7 @@ exports.postMessage = async (req, res) => {
       username: user.username,
       content: content
     });
-    
+
     await topic.save();
 
     // OBSERVER PATTERN
@@ -146,6 +146,7 @@ exports.dashboard = async (req, res) => {
 
       result.push({
         topicName: topic.name,
+        accessCount: topic.accessCount,   
         messages: topic.messages.slice(-2)
       });
     }
